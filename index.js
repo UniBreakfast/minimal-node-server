@@ -6,6 +6,9 @@ http.createServer(handleRequest).listen(5500);
 
 function handleRequest(request, response) {
   try {
+    if (request.url.endsWith('.css')) {
+      response.setHeader('Content-Type', 'text/css');
+    }
     response.end(fs.readFileSync(__dirname + request.url));
   } catch {
     response.writeHead(404).end('not found');
