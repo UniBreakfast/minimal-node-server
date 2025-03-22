@@ -8,6 +8,6 @@ function handleRequest(request, response) {
   try {
     response.end(fs.readFileSync(__dirname + request.url));
   } catch {
-    response.end('not found');
+    response.writeHead(404).end('not found');
   }
 }
